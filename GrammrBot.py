@@ -6,12 +6,18 @@ from asyncio import create_task
 
 import streamlit as st
 from shared.client import Client
-from shared.model.literal_translation import LiteralTranslation  # type: ignore[import-untyped]
-from shared.model.response_suggestion import should_generate_response_suggestions  # type: ignore[import-untyped]
-from shared.model.syntactical_analysis import SyntacticalAnalysis  # type: ignore[import-untyped]
-from shared.model.translation import Translation  # type: ignore[import-untyped]
-from shared.rendering import Stringifier, MarkupLanguage
 from shared.exception import ApplicationException
+from shared.model.literal_translation import (
+    LiteralTranslation,
+)  # type: ignore[import-untyped]
+from shared.model.response_suggestion import (
+    should_generate_response_suggestions,
+)  # type: ignore[import-untyped]
+from shared.model.syntactical_analysis import (
+    SyntacticalAnalysis,
+)  # type: ignore[import-untyped]
+from shared.model.translation import Translation  # type: ignore[import-untyped]
+from shared.rendering import MarkupLanguage, Stringifier
 
 
 def create_client(use_local: bool = False) -> Client:
@@ -44,7 +50,7 @@ async def chat(client: Client, stringifier: Stringifier):
             st.markdown(prompt)
 
         # Display assistant response in chat message container
-        with (st.chat_message("assistant")):
+        with st.chat_message("assistant"):
             sentence = find_latest_user_message(st.session_state.messages)["content"]
 
             # create futures for all requests
