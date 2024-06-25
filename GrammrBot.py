@@ -20,12 +20,9 @@ from shared.model.translation import Translation  # type: ignore[import-untyped]
 from shared.rendering import MarkupLanguage, Stringifier
 
 
-def create_client(use_local: bool = False) -> Client:
-    if use_local:
-        return Client(host="http://localhost:5001")
-    else:
-        api_gateway_url = st.secrets["API_GATEWAY"]
-        return Client(host=api_gateway_url)
+def create_client() -> Client:
+    api_base = st.secrets["API_BASE_URL"]
+    return Client(host=api_base)
 
 
 async def chat(client: Client, stringifier: Stringifier):
@@ -125,19 +122,12 @@ def render_message(string: str, interval: float = 0.025, placeholder=None) -> No
     st.session_state.messages.append({"role": "assistant", "content": string})
 
 
-def parse_args():
-    args = sys.argv
-    if "local" in args:
-        return True
-
-
 if __name__ == "__main__":
-    local = parse_args()
     logging.basicConfig(
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         level=logging.INFO,
     )
     st.set_page_config(page_title="GrammrBot")
-    client = create_client(use_local=local)
+    client = create_client()
     stringifier = Stringifier(MarkupLanguage.MARKDOWN)
     asyncio.run(chat(client, stringifier))

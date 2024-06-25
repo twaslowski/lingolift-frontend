@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "frontend"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Tobias Waslowski <tobiaswaslowski@gmail.com>"]
 readme = "README.md"
@@ -10,7 +10,7 @@ python = "^3.11.9"
 streamlit = "^1.35.0"
 pytest = "^7.4.4"
 mypy = "^1.8.0"
-shared = {git = "https://github.com/twaslowski/lingolift-shared"}
+shared = {git = "https://github.com/twaslowski/lingolift-shared", tag = "0.7.3"}
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.8.0"

@@ -2,10 +2,9 @@
 
 
 ## quality-gates: Quick and easy quality confirmations
-function task_quality_gates {
-  set -e
-  task_format
-  task_test
+function task_run {
+  echo "API_BASE_URL='http://localhost:5001'" > .streamlit/secrets.toml
+  poetry run streamlit run GrammrBot.py
 }
 
 ## formatting: Applies formatting
