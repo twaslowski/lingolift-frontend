@@ -1614,8 +1614,8 @@ pydantic = "^2.5.3"
 [package.source]
 type = "git"
 url = "https://github.com/twaslowski/lingolift-shared"
-reference = "0.7.3"
-resolved_reference = "2afd7ba98579f5eaf9527f41704a5056cff9b3f0"
+reference = "0.7.4"
+resolved_reference = "f86cda8ac49347765ccb09b262a5161b142d2849"
 
 [[package]]
 name = "six"
@@ -1920,4 +1920,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.9"
-content-hash = "e13aec116be808ffd66e1555846529903a442f9d667ca0915d6e9bea1914cfd9"
+content-hash = "bf6639f18fc1ce5c6c6bc1f05a17af5edb9a14bb27eb9d826964dae8f44fc730"
